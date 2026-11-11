@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { ChatThread } from "@/components/ChatThread";
 import { Detector } from "@/components/Detector";
+import { LanguageNav } from "@/components/LanguageNav";
 import { LocaleLang } from "@/components/LocaleLang";
 import { TypedTitle } from "@/components/TypedTitle";
 import { copy as allCopy } from "@/lib/copy";
 import type { Locale } from "@/lib/i18n";
-import { pathFor } from "@/lib/i18n";
 
 export function Site({ locale }: { locale: Locale }) {
   const copy = allCopy[locale];
@@ -16,17 +15,7 @@ export function Site({ locale }: { locale: Locale }) {
       <a className="skip-link" href="#detector">
         {copy.skipDetector}
       </a>
-      <nav className="lang-bar" aria-label={copy.languagesLabel}>
-        <Link href="/" aria-current={locale === "en" ? "page" : undefined}>
-          English
-        </Link>
-        <Link
-          href="/zh-cn"
-          aria-current={locale === "zh-cn" ? "page" : undefined}
-        >
-          简体中文
-        </Link>
-      </nav>
+      <LanguageNav locale={locale} label={copy.languagesLabel} variant="bar" />
 
       <header className="container hero">
         <TypedTitle prefix={copy.prefix} words={copy.typedWords} />
@@ -105,18 +94,7 @@ export function Site({ locale }: { locale: Locale }) {
             . {copy.detectorNote}
           </p>
           <p>{copy.languagesLabel}:</p>
-          <ul className="lang-list">
-            <li>
-              <Link href={pathFor("en")} hrefLang="en">
-                English
-              </Link>
-            </li>
-            <li>
-              <Link href={pathFor("zh-cn")} hrefLang="zh-CN">
-                简体中文
-              </Link>
-            </li>
-          </ul>
+          <LanguageNav locale={locale} label={copy.languagesLabel} variant="list" />
         </div>
       </footer>
     </div>
