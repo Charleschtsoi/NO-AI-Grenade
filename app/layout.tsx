@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
+import { SITE_URL, languageAlternates } from "@/lib/i18n";
 import "./globals.css";
 
 const lato = Lato({
@@ -15,6 +16,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "no AI grenade",
     template: "%s",
@@ -32,11 +34,12 @@ export const metadata: Metadata = {
   authors: [{ name: "no AI grenade" }],
   openGraph: {
     type: "website",
+    url: SITE_URL,
     title: "no AI grenade",
     description:
       "Please don't throw unread AI at people. Read it first. Ask the actual question.",
     locale: "en",
-    alternateLocale: ["zh_CN"],
+    alternateLocale: ["zh_CN", "zh_TW", "ja_JP", "fr_FR"],
   },
   twitter: {
     card: "summary_large_image",
@@ -46,11 +49,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
-    languages: {
-      en: "/",
-      "zh-CN": "/zh-cn",
-      "x-default": "/",
-    },
+    languages: languageAlternates(),
   },
 };
 

@@ -150,6 +150,52 @@ const ZH_TELLS: Phrase[] = [
   { phrase: "其次，", weight: 0.5 },
   { phrase: "再次，", weight: 0.55 },
   { phrase: "最后，", weight: 0.35 },
+  { phrase: "作為一名人工智慧", weight: 1 },
+  { phrase: "作為人工智慧", weight: 0.95 },
+  { phrase: "綜上所述", weight: 0.9 },
+  { phrase: "總而言之", weight: 0.85 },
+  { phrase: "當然可以", weight: 0.55 },
+  { phrase: "希望對你有幫助", weight: 0.85 },
+  { phrase: "如果您有任何其他問題", weight: 0.95 },
+  { phrase: "接下來我們將", weight: 0.8 },
+  { phrase: "在當今", weight: 0.7 },
+  { phrase: "進行全面", weight: 0.65 },
+  { phrase: "下面為您", weight: 0.7 },
+  { phrase: "好的，這是", weight: 0.7 },
+];
+
+const JA_TELLS: Phrase[] = [
+  { phrase: "もちろんです", weight: 0.85 },
+  { phrase: "包括的な分析", weight: 0.9 },
+  { phrase: "包括的", weight: 0.45 },
+  { phrase: "特筆に値します", weight: 0.85 },
+  { phrase: "極めて重要な役割", weight: 0.85 },
+  { phrase: "今日の急速に進化する", weight: 0.85 },
+  { phrase: "シームレス", weight: 0.55 },
+  { phrase: "ご質問がございましたら", weight: 0.95 },
+  { phrase: "お気軽に", weight: 0.55 },
+  { phrase: "お役に立てば幸いです", weight: 0.85 },
+  { phrase: "まとめると", weight: 0.7 },
+  { phrase: "はじめに", weight: 0.35 },
+  { phrase: "パラダイムシフト", weight: 0.7 },
+  { phrase: "さらに深く掘り下げ", weight: 0.75 },
+];
+
+const FR_TELLS: Phrase[] = [
+  { phrase: "bien entendu", weight: 0.75 },
+  { phrase: "voici une analyse complète", weight: 0.95 },
+  { phrase: "il est important de noter", weight: 0.85 },
+  { phrase: "dans le paysage actuel", weight: 0.8 },
+  { phrase: "joue un rôle essentiel", weight: 0.75 },
+  { phrase: "en conclusion", weight: 0.7 },
+  { phrase: "n'hésitez pas", weight: 0.7 },
+  { phrase: "si vous avez d'autres questions", weight: 0.9 },
+  { phrase: "j'espère que cela vous aide", weight: 0.8 },
+  { phrase: "approche holistique", weight: 0.7 },
+  { phrase: "riche tapisserie", weight: 0.9 },
+  { phrase: "changement de paradigme", weight: 0.7 },
+  { phrase: "de manière transparente", weight: 0.6 },
+  { phrase: "libérer le potentiel", weight: 0.7 },
 ];
 
 const ASSISTANT_OPENERS = [
@@ -163,19 +209,26 @@ const ASSISTANT_OPENERS = [
   /^[\s"'“”]*i'd be happy to/i,
   /^[\s"'“”]*of course[!！]?\s*here/i,
   /^[\s"'“”]*当然可以/,
+  /^[\s"'“”]*當然可以/,
   /^[\s"'“”]*好的[，,！!]/,
   /^[\s"'“”]*没问题[，,！!]/,
+  /^[\s"'“”]*沒問題[，,！!]/,
   /^[\s"'“”]*以下是/,
   /^[\s"'“”]*下面为您/,
+  /^[\s"'“”]*下面為您/,
+  /^[\s"'“”]*もちろんです/,
+  /^[\s"'“”]*bien entendu/i,
+  /^[\s"'“”]*voici une analyse/i,
 ];
 
 const OWNERSHIP_RE =
-  /\b(i (asked|read|skimmed|cut|checked|rewrote|edited|don't buy|do not buy|think|suspect|tried)|i actually (read|looked)|the (useful|only) (bit|part)|ignore (most|the rest)|does that (match|sound)|wdyt|what do you think)\b|[?？]|我(问了|看了|读了|查了|改了|觉得|怀疑)|有用的(就|只有)|你觉得|对得上吗|靠谱吗/i;
+  /\b(i (asked|read|skimmed|cut|checked|rewrote|edited|don't buy|do not buy|think|suspect|tried)|i actually (read|looked)|the (useful|only) (bit|part)|ignore (most|the rest)|does that (match|sound)|wdyt|what do you think|j'ai (demandé|lu|parcouru)|je l'ai vraiment lu|le seul truc utile)\b|[?？]|我(问了|問了|看了|读了|讀了|查了|改了|觉得|覺得|怀疑)|有用的(就|只有)|你觉得|你覺得|对得上吗|靠谱吗|自分で読んだ|聞いた|どう思う/i;
 
-const QUESTION_RE = /[?？]|\b(wdyt|what do you think|does that|can you|could you|any idea|does this)\b|吗[？?]?|呢[？?]?|对吗|行吗|可以吗/;
+const QUESTION_RE =
+  /[?？]|\b(wdyt|what do you think|does that|can you|could you|any idea|does this|est-ce que|tu penses)\b|吗[？?]?|嗎[？?]?|呢[？?]?|对吗|對嗎|行吗|可以吗|ですか|でしょうか|同じ\？/;
 
 const HUMAN_WRAPPER_RE =
-  /\b(i asked|i read|i skimmed|ignore most|useful bit|does that match|quick check)\b|我(问了|看了|读了)|有用的就|你觉得呢/;
+  /\b(i asked|i read|i skimmed|ignore most|useful bit|does that match|quick check|j'ai demandé|je l'ai vraiment lu|le seul truc utile)\b|我(问了|問了|看了|读了|讀了)|有用的就|你觉得呢|自分で読んだ|使えるの一句/;
 
 const DISCOURSE_RES: { id: string; re: RegExp; weight: number }[] = [
   {
@@ -195,8 +248,13 @@ const DISCOURSE_RES: { id: string; re: RegExp; weight: number }[] = [
   },
   {
     id: "zh-not-but",
-    re: /不仅[^。！？]{0,40}而且/g,
+    re: /不仅[^。！？]{0,40}而且|不僅[^。！？]{0,40}而且/g,
     weight: 0.5,
+  },
+  {
+    id: "fr-not-but",
+    re: /ne devrait pas seulement[^.]{0,80}mais plutôt|non seulement[^.]{0,60}mais/gi,
+    weight: 0.55,
   },
 ];
 
@@ -207,8 +265,10 @@ export function countTokens(text: string): {
   cjkChars: number;
   tokens: number;
 } {
-  const latinWords = (text.match(/[A-Za-z]+(?:'[A-Za-z]+)?/g) ?? []).length;
-  const cjkChars = (text.match(/[\u3400-\u9FFF\uF900-\uFAFF]/g) ?? []).length;
+  const latinWords = (text.match(/[A-Za-zÀ-ÖØ-öø-ÿ]+(?:'[A-Za-zÀ-ÖØ-öø-ÿ]+)?/g) ?? [])
+    .length;
+  const cjkChars = (text.match(/[\u3040-\u30FF\u3400-\u9FFF\uF900-\uFAFF]/g) ?? [])
+    .length;
   return { latinWords, cjkChars, tokens: latinWords + cjkChars };
 }
 
@@ -349,6 +409,13 @@ function assistantScore(
     "希望这对您有帮助",
     "如果您有任何其他问题",
     "如果您还有其他问题",
+    "希望對你有幫助",
+    "如果您有任何其他問題",
+    "ご質問がございましたら",
+    "お役に立てば幸いです",
+    "n'hésitez pas",
+    "si vous avez d'autres questions",
+    "j'espère que cela vous aide",
   ];
   const lower = text.toLowerCase();
   for (const closer of closers) {
@@ -420,7 +487,12 @@ export function analyze(text: string): DetectionResult {
   const sentences = splitSentences(raw);
   const highlights: Highlight[] = [];
 
-  const tells = findPhraseHits(raw, [...EN_TELLS, ...ZH_TELLS]);
+  const tells = findPhraseHits(raw, [
+    ...EN_TELLS,
+    ...ZH_TELLS,
+    ...JA_TELLS,
+    ...FR_TELLS,
+  ]);
   highlights.push(...tells.highlights);
 
   const assistant = assistantScore(raw);

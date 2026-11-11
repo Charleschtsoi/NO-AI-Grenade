@@ -1,0 +1,65 @@
+import type { SignalId, Verdict } from "../detect";
+
+export type ChatLine = {
+  name: string;
+  initials: string;
+  color: string;
+  time: string;
+  text: string;
+  dump?: {
+    badge: string;
+    lines: string[];
+  };
+};
+
+export type Copy = {
+  htmlLang: string;
+  localeName: string;
+  docTitle: string;
+  docDescription: string;
+  brand: string;
+  prefix: string;
+  typedWords: string[];
+  subtitle: string;
+  leadBefore: string;
+  leadEm: string;
+  leadAfter: string;
+  skipDetector: string;
+  dontTitle: string;
+  doTitle: string;
+  dontMessages: ChatLine[];
+  doMessages: ChatLine[];
+  dontParagraphs: string[];
+  dontListLabel: string;
+  dontList: string[];
+  dontCloser: string;
+  doParagraphs: string[];
+  doListLabel: string;
+  doList: string[];
+  doCloser: string;
+  detectorEyebrow: string;
+  detectorTitle: string;
+  detectorLead: string;
+  detectorPrivacy: string;
+  placeholder: string;
+  analyze: string;
+  analyzing: string;
+  paste: string;
+  sampleGrenade: string;
+  sampleHuman: string;
+  clear: string;
+  tokenLabel: (n: number) => string;
+  aiMeter: string;
+  grenadeMeter: string;
+  verdicts: Record<Verdict, { title: string; body: string }>;
+  signalLabels: Record<SignalId, { title: string; hint: string }>;
+  hitsLabel: string;
+  highlightLegend: string;
+  sampleGrenadeText: string;
+  sampleHumanText: string;
+  footer: string[];
+  inspired: string;
+  nohello: string;
+  detectorNote: string;
+  languagesLabel: string;
+};
