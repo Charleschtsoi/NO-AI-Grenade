@@ -15,6 +15,28 @@ export const ja: Copy = {
   leadAfter:
     "と書いてある実弾の手榴弾を、ピンが残っているか確認せずに渡すところを想像してみてください。",
   skipDetector: "検出へスキップ",
+  sentHere:
+    "ここに送られたなら、相手は読んでない AI の投下を受け取った。Slack のステータスやプロフィール用にリンクをコピーするか、投げる前に下書きを嗅いで。",
+  copyLink: "このリンクをコピー",
+  copiedLink: "コピーした",
+  sniffDraft: "下書きを嗅ぐ",
+  expandDump: "続きを見る",
+  collapseDump: "閉じる",
+  shortcutHint: "Ctrl / ⌘ Enter",
+  pasteBlocked: "クリップボードを読めない。Ctrl / ⌘ V で貼って。",
+  copyTemplate: "骨格をコピー",
+  copiedTemplate: "コピーした",
+  nextStepGrenadeTitle: "このまま送るな",
+  nextStepGrenadeBody:
+    "これは見積もりであり、証明ではない。自分で読んでから、人の一文で包め。空欄は自分で埋める。ここは書き直してくれない。",
+  nextStepTemplate:
+    "[モデル] に [話題] を聞いた。自分で読んだ。使えるの一句：[一文]。見てたのと同じ？",
+  nextStepOkTitle: "送れそうなメッセージ",
+  nextStepOkBody:
+    "散らかって具体的ならそれでいい。読んで、本当の質問があるなら送っていい。",
+  nextStepUncertainTitle: "読んでから聞け",
+  nextStepUncertainBody:
+    "信号が混ざる。読んでいないなら先に読め。読んだなら、送る前に本当の質問を足せ。",
   dontTitle: "こうしない",
   doTitle: "こうしてみる",
   dontMessages: [

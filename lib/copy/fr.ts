@@ -14,6 +14,28 @@ export const fr: Copy = {
   leadEm: "« J'ai demandé à ChatGPT »",
   leadAfter: " — sans vérifier si la goupille est encore là.",
   skipDetector: "Aller au détecteur",
+  sentHere:
+    "Si on t'a envoyé ici, c'est qu'un pavé d'IA non relu est arrivé. Copie le lien pour un statut Slack ou une bio — ou va renifler un brouillon avant d'en jeter un.",
+  copyLink: "Copier ce lien",
+  copiedLink: "Copié",
+  sniffDraft: "Renifler un brouillon",
+  expandDump: "Voir le reste",
+  collapseDump: "Replier",
+  shortcutHint: "Ctrl / ⌘ Entrée",
+  pasteBlocked: "Le presse-papiers est bloqué ici — colle avec Ctrl / ⌘ V.",
+  copyTemplate: "Copier le canevas",
+  copiedTemplate: "Copié",
+  nextStepGrenadeTitle: "Ne l'envoie pas tel quel",
+  nextStepGrenadeBody:
+    "C'est une estimation, pas une preuve. Lis-le toi-même, puis envoie une enveloppe humaine. Remplis les blancs — rien ici ne réécrit le texte pour toi.",
+  nextStepTemplate:
+    "J'ai demandé à [modèle] pour [sujet]. Je l'ai vraiment lu. Le truc utile : [une phrase]. Ça colle avec ce que tu sais ?",
+  nextStepOkTitle: "Ça a l'air envoyable",
+  nextStepOkBody:
+    "Bordélique et précis, ça va. Si tu l'as lu et que ça pose une vraie question, envoie.",
+  nextStepUncertainTitle: "Lis, puis demande",
+  nextStepUncertainBody:
+    "Signaux mêlés. Si tu n'as pas lu, lis. Si tu as lu, ajoute la vraie question avant d'envoyer.",
   dontTitle: "Ne fais pas ça",
   doTitle: "Essaie plutôt ça",
   dontMessages: [

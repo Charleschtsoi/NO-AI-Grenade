@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { copyText } from "@/lib/clipboard";
 import { copy as allCopy } from "@/lib/copy";
 import { analyze, countTokens, type DetectionResult } from "@/lib/detect";
 import type { Locale } from "@/lib/i18n";
+import { nextStepKind } from "@/lib/next-step";
 
 function Meter({
   label,
@@ -80,13 +82,18 @@ export function Detector({ locale }: { locale: Locale }) {
   const [text, setText] = useState("");
   const [result, setResult] = useState<DetectionResult | null>(null);
   const [busy, setBusy] = useState(false);
+  const [pasteError, setPasteError] = useState(false);
+  const [copiedTemplate, setCopiedTemplate] = useState(false);
+  const resultRef = useRef<HTMLHeadingElement>(null);
   const tokens = useMemo(() => countTokens(text).tokens, [text]);
 
   async function run() {
     setBusy(true);
+    setPasteError(false);
     await new Promise((resolve) => window.setTimeout(resolve, 30));
     setResult(analyze(text));
     setBusy(false);
+    window.setTimeout(() => resultRef.current?.focus(), 0);
   }
 
   async function pasteFromClipboard() {
@@ -94,12 +101,22 @@ export function Detector({ locale }: { locale: Locale }) {
       const pasted = await navigator.clipboard.readText();
       setText(pasted);
       setResult(null);
+      setPasteError(false);
     } catch {
-      setText((current) => current);
+      setPasteError(true);
+    }
+  }
+
+  async function copyTemplate() {
+    const ok = await copyText(copy.nextStepTemplate);
+    if (ok) {
+      setCopiedTemplate(true);
+      window.setTimeout(() => setCopiedTemplate(false), 2000);
     }
   }
 
   const verdict = result ? copy.verdicts[result.verdict] : null;
+  const step = result ? nextStepKind(result.verdict) : null;
 
   return (
     <section className="detector-wrap" id="detector">
@@ -113,12 +130,26 @@ export function Detector({ locale }: { locale: Locale }) {
           onChange={(event) => {
             setText(event.target.value);
             setResult(null);
+            setPasteError(false);
+          }}
+          onKeyDown={(event) => {
+            if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+              event.preventDefault();
+              void run();
+            }
           }}
           placeholder={copy.placeholder}
           aria-label={copy.detectorTitle}
+          aria-describedby="detector-shortcut"
         />
         <div className="detector-toolbar">
-          <button className="primary" type="button" onClick={run} disabled={busy}>
+          <button
+            className="primary"
+            type="button"
+            onClick={run}
+            disabled={busy}
+            aria-busy={busy}
+          >
             {busy ? copy.analyzing : copy.analyze}
           </button>
           <button className="ghost" type="button" onClick={pasteFromClipboard}>
@@ -130,6 +161,7 @@ export function Detector({ locale }: { locale: Locale }) {
             onClick={() => {
               setText(copy.sampleGrenadeText);
               setResult(null);
+              setPasteError(false);
             }}
           >
             {copy.sampleGrenade}
@@ -140,6 +172,7 @@ export function Detector({ locale }: { locale: Locale }) {
             onClick={() => {
               setText(copy.sampleHumanText);
               setResult(null);
+              setPasteError(false);
             }}
           >
             {copy.sampleHuman}
@@ -150,19 +183,48 @@ export function Detector({ locale }: { locale: Locale }) {
             onClick={() => {
               setText("");
               setResult(null);
+              setPasteError(false);
             }}
           >
             {copy.clear}
           </button>
-          <span className="grow">{copy.tokenLabel(tokens)}</span>
+          <span className="grow" id="detector-shortcut">
+            {copy.tokenLabel(tokens)}
+            <span className="shortcut"> · {copy.shortcutHint}</span>
+          </span>
         </div>
+        {pasteError ? <p className="paste-error">{copy.pasteBlocked}</p> : null}
 
         {result && verdict ? (
           <div className="results">
             <div className={`verdict ${result.verdict}`}>
-              <h3>{verdict.title}</h3>
+              <h3 ref={resultRef} id="detector-result" tabIndex={-1}>
+                {verdict.title}
+              </h3>
               <p>{verdict.body}</p>
             </div>
+            {step === "template" ? (
+              <div className="next-step">
+                <h4>{copy.nextStepGrenadeTitle}</h4>
+                <p>{copy.nextStepGrenadeBody}</p>
+                <pre className="skeleton">{copy.nextStepTemplate}</pre>
+                <button className="ghost" type="button" onClick={copyTemplate}>
+                  {copiedTemplate ? copy.copiedTemplate : copy.copyTemplate}
+                </button>
+              </div>
+            ) : null}
+            {step === "ok" ? (
+              <div className="next-step ok">
+                <h4>{copy.nextStepOkTitle}</h4>
+                <p>{copy.nextStepOkBody}</p>
+              </div>
+            ) : null}
+            {step === "read" ? (
+              <div className="next-step">
+                <h4>{copy.nextStepUncertainTitle}</h4>
+                <p>{copy.nextStepUncertainBody}</p>
+              </div>
+            ) : null}
             <div className="meters">
               <Meter label={copy.aiMeter} value={result.aiScore} />
               <Meter

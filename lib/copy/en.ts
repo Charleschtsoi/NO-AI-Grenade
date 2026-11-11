@@ -14,6 +14,28 @@ export const en: Copy = {
   leadEm: "“I asked ChatGPT”",
   leadAfter: " — without checking whether the pin is still in.",
   skipDetector: "Skip to the detector",
+  sentHere:
+    "If someone sent you this, they got an unread AI dump. Copy the link for a Slack status or bio — or sniff a draft before you throw one.",
+  copyLink: "Copy this link",
+  copiedLink: "Copied",
+  sniffDraft: "Sniff a draft",
+  expandDump: "Show the rest",
+  collapseDump: "Hide the rest",
+  shortcutHint: "Ctrl / ⌘ Enter",
+  pasteBlocked: "Clipboard is blocked here — paste with Ctrl / ⌘ V.",
+  copyTemplate: "Copy the skeleton",
+  copiedTemplate: "Copied",
+  nextStepGrenadeTitle: "Don't send this as-is",
+  nextStepGrenadeBody:
+    "This is an estimate, not proof. Read it yourself, then send a human wrapper. Fill in the blanks — nothing here rewrites the text for you.",
+  nextStepTemplate:
+    "I asked [model] about [topic]. I actually read it. The useful bit: [one sentence]. Does that match what you know?",
+  nextStepOkTitle: "This looks sendable",
+  nextStepOkBody:
+    "Messy and specific is fine. If you read it and it asks a real question, send it.",
+  nextStepUncertainTitle: "Read it, then ask",
+  nextStepUncertainBody:
+    "Mixed signals. If you didn't read it, do that first. If you did, add the actual question before you send.",
   dontTitle: "Don't do this",
   doTitle: "Instead try this",
   dontMessages: [

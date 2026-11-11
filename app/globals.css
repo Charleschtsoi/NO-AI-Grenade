@@ -104,7 +104,7 @@ a:hover {
 }
 
 .hero {
-  margin: 90px auto 140px;
+  margin: 72px auto 88px;
 }
 
 h1.name {
@@ -161,6 +161,43 @@ h1.name {
 .lead em {
   font-style: italic;
   white-space: nowrap;
+}
+
+.hero-actions {
+  margin-top: 28px;
+  max-width: 36em;
+}
+
+.sent-here {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+a.btn:hover {
+  text-decoration: none;
+}
+
+button:focus-visible,
+a.btn:focus-visible,
+.dump-toggle:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .pair {
@@ -270,6 +307,11 @@ h1.name {
   white-space: pre-wrap;
 }
 
+.dump.open {
+  max-height: none;
+  padding-bottom: 12px;
+}
+
 .dump::after {
   content: "";
   position: absolute;
@@ -278,6 +320,22 @@ h1.name {
   bottom: 0;
   height: 56px;
   background: linear-gradient(transparent, var(--dump));
+  pointer-events: none;
+}
+
+.dump.open::after {
+  display: none;
+}
+
+.dump-toggle {
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--link);
+  font: 600 13px/1.4 var(--font-sans);
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .dump-badge {
@@ -585,6 +643,59 @@ a.ghost {
   font-size: 13px;
   color: var(--subtitle);
   margin: 8px 0 0;
+}
+
+.shortcut {
+  color: var(--subtitle);
+  font-weight: 400;
+}
+
+.paste-error {
+  margin: 10px 0 0;
+  color: var(--strike);
+  font-size: 14px;
+}
+
+.next-step {
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid #ececec;
+  background: #fafafa;
+}
+
+.next-step.ok {
+  background: #f1faf4;
+  border-color: #cfe8d7;
+}
+
+.next-step h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.next-step p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.skeleton {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  background: #fff;
+  border-radius: 8px;
+  font: 14px/1.5 var(--font-sans);
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+
+#detector-result:focus {
+  outline: none;
+}
+
+#detector-result:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
 }
 
 footer.site-footer {

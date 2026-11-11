@@ -1,6 +1,15 @@
+import { DumpPreview } from "@/components/DumpPreview";
 import type { ChatLine } from "@/lib/copy";
 
-export function ChatThread({ messages }: { messages: ChatLine[] }) {
+export function ChatThread({
+  messages,
+  expandDump,
+  collapseDump,
+}: {
+  messages: ChatLine[];
+  expandDump: string;
+  collapseDump: string;
+}) {
   return (
     <div className="chat-card">
       {messages.map((message, index) => (
@@ -21,10 +30,12 @@ export function ChatThread({ messages }: { messages: ChatLine[] }) {
               <div className="slack-message">{message.text}</div>
             ) : null}
             {message.dump ? (
-              <div className="dump">
-                <div className="dump-badge">{message.dump.badge}</div>
-                <div className="dump-body">{message.dump.lines.join("\n")}</div>
-              </div>
+              <DumpPreview
+                badge={message.dump.badge}
+                lines={message.dump.lines}
+                expandLabel={expandDump}
+                collapseLabel={collapseDump}
+              />
             ) : null}
           </div>
         </div>
