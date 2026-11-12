@@ -1,5 +1,6 @@
 import { ChatThread } from "@/components/ChatThread";
 import { Detector } from "@/components/Detector";
+import { HeroActions } from "@/components/HeroActions";
 import { LanguageNav } from "@/components/LanguageNav";
 import { LocaleLang } from "@/components/LocaleLang";
 import { TypedTitle } from "@/components/TypedTitle";
@@ -25,6 +26,13 @@ export function Site({ locale }: { locale: Locale }) {
           <em>{copy.leadEm}</em>
           {copy.leadAfter}
         </p>
+        <HeroActions
+          locale={locale}
+          sentHere={copy.sentHere}
+          copyLink={copy.copyLink}
+          copiedLink={copy.copiedLink}
+          sniffDraft={copy.sniffDraft}
+        />
       </header>
 
       <section className="container pair">
@@ -35,7 +43,11 @@ export function Site({ locale }: { locale: Locale }) {
             </span>
             {copy.dontTitle}
           </h2>
-          <ChatThread messages={copy.dontMessages} />
+          <ChatThread
+            messages={copy.dontMessages}
+            expandDump={copy.expandDump}
+            collapseDump={copy.collapseDump}
+          />
         </div>
         <div className="section-right">
           <div className="prose dont">
@@ -61,7 +73,11 @@ export function Site({ locale }: { locale: Locale }) {
             </span>
             {copy.doTitle}
           </h2>
-          <ChatThread messages={copy.doMessages} />
+          <ChatThread
+            messages={copy.doMessages}
+            expandDump={copy.expandDump}
+            collapseDump={copy.collapseDump}
+          />
         </div>
         <div className="section-right">
           <div className="prose do">

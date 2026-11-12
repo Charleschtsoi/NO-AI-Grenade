@@ -13,6 +13,27 @@ export const zhCn: Copy = {
   leadEm: "「我问了 ChatGPT」",
   leadAfter: "的手雷扔给同事，却没自己先看过引信还在不在。",
   skipDetector: "跳到检测器",
+  sentHere:
+    "如果有人把你送到这儿，多半是刚挨了一记没看过的 AI 长文。把链接拷进 Slack 状态或简介——或者先闻一下草稿，再决定扔不扔。",
+  copyLink: "复制本页链接",
+  copiedLink: "已复制",
+  sniffDraft: "去闻草稿",
+  expandDump: "展开全文",
+  collapseDump: "收起",
+  shortcutHint: "Ctrl / ⌘ Enter",
+  pasteBlocked: "这里没法读剪贴板——用 Ctrl / ⌘ V 粘贴。",
+  copyTemplate: "复制骨架",
+  copiedTemplate: "已复制",
+  nextStepGrenadeTitle: "别原样发出去",
+  nextStepGrenadeBody:
+    "这是估计，不是证据。你自己看过，再用一句人话包一层。空要你填——这里不会替你改写。",
+  nextStepTemplate:
+    "我问了 [模型] 关于 [题目]。我自己看过了。有用的就一句：[一句话]。你觉得对得上吗？",
+  nextStepOkTitle: "这像能发的消息",
+  nextStepOkBody: "乱一点、具体一点没问题。你看过、还问了真事，就发出去。",
+  nextStepUncertainTitle: "先看，再问",
+  nextStepUncertainBody:
+    "信号混杂。没看就先看。看过了，把真正的问题写上再发。",
   dontTitle: "不要这样做",
   doTitle: "试着这样做",
   dontMessages: [
