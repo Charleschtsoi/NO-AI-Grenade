@@ -139,8 +139,25 @@ export const zhTw: Copy = {
   detectorEyebrow: "引信檢查",
   detectorTitle: "扔出去之前，先聞一下",
   detectorLead:
-    "把草稿貼進來。這是嗅探，不是法庭：套話、助手口吻、Markdown 長文，以及你到底有沒有問問題。",
-  detectorPrivacy: "在你的瀏覽器裡執行。文字不會上傳、儲存，也不會發給模型介面。",
+    "把草稿貼進來。本地嗅探看的是沒看就丟：助手口吻、Markdown 長文、有沒有真正提問。這不是法庭，也不是 GPTZero。像不像 AI，請用下面的公開偵測器。",
+  detectorPrivacy:
+    "本地嗅探留在這只瀏覽器裡。打開 GPTZero、Copyleaks 或 ZeroGPT，複製出的草稿會發給那個網站。我們仍然不存。",
+  publicDetectorsTitle: "或者用公開偵測器聞一下",
+  publicDetectorsLead:
+    "這些是常見的免費貼上框。沒有 API 金鑰就沒辦法嵌進本頁，它們也不是證據。先複製草稿，再到對方頁面貼上。",
+  publicDetectorsPrivacy:
+    "那個網站會收到文字。本站仍然不上傳、不儲存、也不呼叫他們的介面。",
+  publicDetectorsEmpty: "先貼一段草稿，再複製到其中一個去。",
+  publicDetectorsCopied: "已複製。到對方頁面自己貼上——他們的框不會自動填上。",
+  publicDetectorsCopyFailed: "這裡複製不了。請到對方頁面自己貼上。",
+  publicDetectorsOpen: "複製並打開",
+  publicDetectorHints: {
+    gptzero: "gptzero.me 的免費貼上框。大約每次 10,000 字元。那是他們的估計，不是我們的。",
+    copyleaks:
+      "copyleaks.com 的免費貼上框。大約 25,000 字元，不用登入。那是他們的估計，不是我們的。",
+    zerogpt:
+      "zerogpt.com 的免費貼上框。大約 15,000 字元，不用帳號。用的人多，錯的也多。仍然只是估計。",
+  },
   placeholder: "把你正要發出去的訊息貼在這裡……",
   analyze: "聞一下",
   analyzing: "在聞……",
@@ -149,7 +166,8 @@ export const zhTw: Copy = {
   sampleHuman: "人寫樣例",
   clear: "清空",
   tokenLabel: (n) => `${n.toLocaleString()} 個詞元`,
-  aiMeter: "像不像 AI",
+  aiMeter: "本地套話",
+  meterCaption: "瀏覽器裡的套話嗅探——不是偵測分數，更不是證據。",
   grenadeMeter: "沒看就丟",
   verdicts: {
     "too-short": {
@@ -254,6 +272,6 @@ export const zhTw: Copy = {
   ],
   inspired: "靈感來自",
   nohello: "nohello.net",
-  detectorNote: "偵測器在你的瀏覽器裡執行，什麼都不會上傳。",
+  detectorNote: "本地嗅探留在瀏覽器裡。只有你複製過去，公開偵測器才會看到草稿。",
   languagesLabel: "本站語言",
 };

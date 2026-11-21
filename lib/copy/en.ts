@@ -141,9 +141,28 @@ export const en: Copy = {
   detectorEyebrow: "Pin check",
   detectorTitle: "Before you throw it, sniff it",
   detectorLead:
-    "Paste a draft. This is a sniff test — stylometry, assistant-voice, markdown dumps, and whether you actually asked a question. It is not a courtroom.",
+    "Paste a draft. The local sniff is for unread dumps — assistant voice, markdown walls, no question. It is not a courtroom, and it is not GPTZero. For AI-looking, copy the draft into a public detector below.",
   detectorPrivacy:
-    "It runs in your browser. The text is not uploaded, stored, or sent to a model API.",
+    "The local sniff stays in this browser. Opening GPTZero, Copyleaks, or ZeroGPT sends the copied draft to that site. We still don't store it.",
+  publicDetectorsTitle: "Or sniff it with a public detector",
+  publicDetectorsLead:
+    "These are the common free paste boxes. None of them can be built into this page without an API key, and none of them are proof. Copy the draft, then paste on their page.",
+  publicDetectorsPrivacy:
+    "That site receives the text. This one still does not upload, store, or call their API.",
+  publicDetectorsEmpty: "Paste a draft first, then copy it into one of these.",
+  publicDetectorsCopied:
+    "Copied. Paste it on their page — their box does not fill itself.",
+  publicDetectorsCopyFailed:
+    "Could not copy here. Paste the draft yourself on their page.",
+  publicDetectorsOpen: "Copy & open",
+  publicDetectorHints: {
+    gptzero:
+      "Free paste box on gptzero.me. About 10,000 characters per scan. Their estimate, not ours.",
+    copyleaks:
+      "Free paste box on copyleaks.com. About 25,000 characters without logging in. Their estimate, not ours.",
+    zerogpt:
+      "Free paste box on zerogpt.com. About 15,000 characters, no account. Widely used, also often wrong. Still an estimate.",
+  },
   placeholder: "Paste the message you were about to send…",
   analyze: "Sniff this",
   analyzing: "Sniffing…",
@@ -152,7 +171,9 @@ export const en: Copy = {
   sampleHuman: "Sample human",
   clear: "Clear",
   tokenLabel: (n) => `${n.toLocaleString()} token${n === 1 ? "" : "s"}`,
-  aiMeter: "AI-looking",
+  aiMeter: "Local tells",
+  meterCaption:
+    "Phrase sniff in this browser — not a detector score, not proof.",
   grenadeMeter: "Unread dump",
   verdicts: {
     "too-short": {
@@ -257,6 +278,7 @@ does that match what you saw last week? if yes I'll bump the delay to 200ms and 
   ],
   inspired: "Inspired by",
   nohello: "nohello.net",
-  detectorNote: "The detector stays in your browser. Nothing is uploaded.",
+  detectorNote:
+    "The local sniff stays in your browser. Public detectors only see a draft if you copy it to them.",
   languagesLabel: "This site is available in",
 };

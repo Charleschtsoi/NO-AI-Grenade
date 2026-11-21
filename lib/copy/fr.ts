@@ -141,9 +141,28 @@ export const fr: Copy = {
   detectorEyebrow: "Contrôle de goupille",
   detectorTitle: "Avant de la jeter, renifle-la",
   detectorLead:
-    "Colle un brouillon. C'est un test d'odeur, pas un tribunal : tics de style, voix d'assistant, pavés Markdown, et si tu as vraiment posé une question.",
+    "Colle un brouillon. Le reniflage local vise les pavés non lus — voix d'assistant, murs Markdown, pas de question. Ce n'est pas un tribunal, et ce n'est pas GPTZero. Pour l'air d'IA, copie le brouillon dans un détecteur public plus bas.",
   detectorPrivacy:
-    "Ça tourne dans ton navigateur. Le texte n'est ni envoyé, ni stocké, ni transmis à une API de modèle.",
+    "Le reniflage local reste dans ce navigateur. Ouvrir GPTZero, Copyleaks ou ZeroGPT envoie le brouillon copié à ce site. Nous ne le stockons toujours pas.",
+  publicDetectorsTitle: "Ou renifle-le avec un détecteur public",
+  publicDetectorsLead:
+    "Ce sont les boîtes de collage gratuites les plus courantes. Aucune ne peut être intégrée ici sans clé API, et aucune n'est une preuve. Copie le brouillon, puis colle-le sur leur page.",
+  publicDetectorsPrivacy:
+    "Ce site-là reçoit le texte. Celui-ci n'envoie rien, ne stocke rien, et n'appelle pas leur API.",
+  publicDetectorsEmpty: "Colle d'abord un brouillon, puis copie-le dans l'un d'eux.",
+  publicDetectorsCopied:
+    "Copié. Colle-le sur leur page — leur boîte ne se remplit pas toute seule.",
+  publicDetectorsCopyFailed:
+    "Impossible de copier ici. Colle le brouillon toi-même sur leur page.",
+  publicDetectorsOpen: "Copier et ouvrir",
+  publicDetectorHints: {
+    gptzero:
+      "Boîte gratuite sur gptzero.me. Environ 10 000 caractères par scan. Leur estimation, pas la nôtre.",
+    copyleaks:
+      "Boîte gratuite sur copyleaks.com. Environ 25 000 caractères sans se connecter. Leur estimation, pas la nôtre.",
+    zerogpt:
+      "Boîte gratuite sur zerogpt.com. Environ 15 000 caractères, sans compte. Très utilisé, souvent faux. Toujours une estimation.",
+  },
   placeholder: "Colle le message que tu allais envoyer…",
   analyze: "Renifler",
   analyzing: "Reniflage…",
@@ -152,7 +171,9 @@ export const fr: Copy = {
   sampleHuman: "Exemple humain",
   clear: "Effacer",
   tokenLabel: (n) => `${n.toLocaleString()} jeton${n === 1 ? "" : "s"}`,
-  aiMeter: "Air d'IA",
+  aiMeter: "Tics locaux",
+  meterCaption:
+    "Reniflage de formules dans ce navigateur — pas un score de détecteur, pas une preuve.",
   grenadeMeter: "Pavé non lu",
   verdicts: {
     "too-short": {
@@ -257,6 +278,7 @@ c'est ce que t'avais vu la semaine dernière ? si oui je passe le délai à 200 
   ],
   inspired: "Inspiré par",
   nohello: "nohello.net",
-  detectorNote: "Le détecteur reste dans ton navigateur. Rien n'est envoyé.",
+  detectorNote:
+    "Le reniflage local reste dans ton navigateur. Un détecteur public ne voit un brouillon que si tu le copies vers lui.",
   languagesLabel: "Ce site existe en",
 };
