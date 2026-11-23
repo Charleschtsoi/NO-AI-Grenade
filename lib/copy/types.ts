@@ -1,4 +1,5 @@
 import type { SignalId, Verdict } from "../detect";
+import type { PublicDetectorId } from "../public-detectors";
 
 export type ChatLine = {
   name: string;
@@ -58,6 +59,14 @@ export type Copy = {
   detectorTitle: string;
   detectorLead: string;
   detectorPrivacy: string;
+  publicDetectorsTitle: string;
+  publicDetectorsLead: string;
+  publicDetectorsPrivacy: string;
+  publicDetectorsEmpty: string;
+  publicDetectorsCopied: string;
+  publicDetectorsCopyFailed: string;
+  publicDetectorsOpen: string;
+  publicDetectorHints: Record<PublicDetectorId, string>;
   placeholder: string;
   analyze: string;
   analyzing: string;
@@ -67,6 +76,7 @@ export type Copy = {
   clear: string;
   tokenLabel: (n: number) => string;
   aiMeter: string;
+  meterCaption: string;
   grenadeMeter: string;
   verdicts: Record<Verdict, { title: string; body: string }>;
   signalLabels: Record<SignalId, { title: string; hint: string }>;

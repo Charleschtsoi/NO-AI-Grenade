@@ -142,9 +142,28 @@ export const ja: Copy = {
   detectorEyebrow: "ピン確認",
   detectorTitle: "投げる前に、嗅いでみる",
   detectorLead:
-    "下書きを貼る。これは嗅覚テストであって法廷ではない。決まり文句、アシスタント口調、Markdown の長文、そして本当に質問しているか。",
+    "下書きを貼る。ローカルの嗅ぎ分けは未読の投下向け——アシスタント口調、Markdown の壁、質問があるか。法廷ではないし、GPTZero でもない。AI っぽさは下の公開検出器へ。",
   detectorPrivacy:
-    "ブラウザの中で動く。文章はアップロードも保存もされず、モデル API にも送らない。",
+    "ローカルの嗅ぎ分けはこのブラウザに留まる。GPTZero、Copyleaks、ZeroGPT を開くと、コピーした下書きはそのサイトに渡る。こちらは保存しない。",
+  publicDetectorsTitle: "あるいは公開検出器で嗅ぐ",
+  publicDetectorsLead:
+    "よくある無料の貼り付け枠。API キーなしではこのページに埋め込めないし、どれも証拠ではない。下書きをコピーして、先方のページに貼る。",
+  publicDetectorsPrivacy:
+    "そのサイトが文章を受け取る。こちらはアップロードも保存も、先方 API の呼び出しもしない。",
+  publicDetectorsEmpty: "先に下書きを貼ってから、どれかにコピーする。",
+  publicDetectorsCopied:
+    "コピーした。先方のページに自分で貼る——枠は自動では埋まらない。",
+  publicDetectorsCopyFailed:
+    "ここではコピーできなかった。先方のページに自分で貼って。",
+  publicDetectorsOpen: "コピーして開く",
+  publicDetectorHints: {
+    gptzero:
+      "gptzero.me の無料貼り付け枠。1回おおよそ 10,000 文字。先方の見積もりであり、こちらではない。",
+    copyleaks:
+      "copyleaks.com の無料貼り付け枠。ログインなしでおおよそ 25,000 文字。先方の見積もりであり、こちらではない。",
+    zerogpt:
+      "zerogpt.com の無料貼り付け枠。おおよそ 15,000 文字、アカウント不要。よく使われ、よく外れる。それでも見積もり。",
+  },
   placeholder: "今から送ろうとしていたメッセージを貼って……",
   analyze: "嗅ぐ",
   analyzing: "嗅いでいる…",
@@ -153,7 +172,9 @@ export const ja: Copy = {
   sampleHuman: "人が書いた例",
   clear: "消す",
   tokenLabel: (n) => `${n.toLocaleString()} トークン`,
-  aiMeter: "AI っぽさ",
+  aiMeter: "ローカルの決まり文句",
+  meterCaption:
+    "このブラウザのフレーズ嗅ぎ分け——検出スコアでも証拠でもない。",
   grenadeMeter: "未読の投下",
   verdicts: {
     "too-short": {
@@ -258,6 +279,7 @@ export const ja: Copy = {
   ],
   inspired: "着想元",
   nohello: "nohello.net",
-  detectorNote: "検出はブラウザの中で動く。何もアップロードしない。",
+  detectorNote:
+    "ローカルの嗅ぎ分けはブラウザに留まる。公開検出器が下書きを見るのは、あなたがコピーしたときだけ。",
   languagesLabel: "対応言語",
 };

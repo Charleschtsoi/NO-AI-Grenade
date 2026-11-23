@@ -6,6 +6,7 @@ import { copy as allCopy } from "@/lib/copy";
 import { analyze, countTokens, type DetectionResult } from "@/lib/detect";
 import type { Locale } from "@/lib/i18n";
 import { nextStepKind } from "@/lib/next-step";
+import { PublicDetectors } from "./PublicDetectors";
 
 function Meter({
   label,
@@ -195,6 +196,8 @@ export function Detector({ locale }: { locale: Locale }) {
         </div>
         {pasteError ? <p className="paste-error">{copy.pasteBlocked}</p> : null}
 
+        <PublicDetectors locale={locale} text={text} />
+
         {result && verdict ? (
           <div className="results">
             <div className={`verdict ${result.verdict}`}>
@@ -232,6 +235,7 @@ export function Detector({ locale }: { locale: Locale }) {
                 value={result.grenadeScore}
                 danger={result.verdict === "grenade"}
               />
+              <p className="legend">{copy.meterCaption}</p>
             </div>
             <div className="signals">
               {result.signals.map((signal) => {
